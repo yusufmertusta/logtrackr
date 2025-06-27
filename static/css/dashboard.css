@@ -1,0 +1,59 @@
+/* Dashboard Specific Styles */
+.upload-area {
+    border: 2px dashed #ddd;
+    border-radius: 10px;
+    padding: 40px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.upload-area:hover {
+    border-color: var(--primary-color);
+    background-color: rgba(46, 134, 171, 0.05);
+}
+
+.upload-area.dragover {
+    border-color: var(--primary-color);
+    background-color: rgba(46, 134, 171, 0.1);
+}
+
+/* Severity Badges */
+.severity-low {
+    background-color: #28a745;
+}
+
+.severity-medium {
+    background-color: #ffc107;
+    color: #000;
+}
+
+.severity-high {
+    background-color: #fd7e14;
+}
+
+.severity-critical {
+    background-color: #dc3545;
+}
+
+/* Table Styles */
+.table-hover tbody tr:hover {
+    background-color: rgba(46, 134, 171, 0.05);
+}
+
+/* Stats Cards */
+.bg-gradient-primary {
+    background: var(--gradient-primary);
+}
+
+.bg-gradient-success {
+    background: var(--gradient-success);
+}
+
+.bg-gradient-danger {
+    background: var(--gradient-danger);
+}
+
+.bg-gradient-warning {
+    background: var(--gradient-warning);
+}

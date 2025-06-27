@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Giriş Yap - LogTrackr{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-4">
+        <div class="card shadow">
+            <div class="card-body p-5">
+                <div class="text-center mb-4">
+                    <i class="fas fa-shield-alt fa-3x text-primary mb-3"></i>
+                    <h2>LogTrackr</h2>
+                    <p class="text-muted">Güvenlik log analiz sistemi</p>
+                </div>
+
+                <!-- Login Form -->
+                <form id="loginForm" class="mb-3">
+                    <div class="mb-3">
+                        <label class="form-label">Kullanıcı Adı</label>
+                        <input type="text" class="form-control" name="username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Şifre</label>
+                        <input type="password" class="form-control" name="password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">
+                        <i class="fas fa-sign-in-alt me-2"></i>Giriş Yap
+                    </button>
+                </form>
+
+                <div class="text-center">
+                    <small class="text-muted">
+                        Hesabınız yok mu? 
+                        <a href="#" onclick="showRegisterForm()">Kayıt Ol</a>
+                    </small>
+                </div>
+
+                <!-- Register Form (hidden) -->
+                <form id="registerForm" class="d-none">
+                    <div class="mb-3">
+                        <label class="form-label">Kullanıcı Adı</label>
+                        <input type="text" class="form-control" name="username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">E-posta</label>
+                        <input type="email" class="form-control" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Şifre</label>
+                        <input type="password" class="form-control" name="password" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Şifre Tekrar</label>
+                        <input type="password" class="form-control" name="password_confirm" required>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">
+                        <i class="fas fa-user-plus me-2"></i>Kayıt Ol
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    if (Auth.isAuthenticated()) {
+        window.location.href = '/dashboard/';
+    }
+
+    // Login form
+    document.getElementById('loginForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+        const credentials = Object.fromEntries(formData);
+
+        try {
+            const response = await api.login(credentials);
+            Auth.login(response);
+            window.location.href = '/dashboard/';
+        } catch (error) {
+            alert('Giriş başarısız: ' + error.message);
+        }
+    });
+
+    // Register form
+    document.getElementById('registerForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+        const userData = Object.fromEntries(formData);
+
+        try {
+            const response = await api.register(userData);
+            Auth.login(response);
+            window.location.href = '/dashboard/';
+        } catch (error) {
+            alert('Kayıt başarısız: ' + error.message);
+        }
+    });
+});
+
+function showRegisterForm() {
+    document.getElementById('loginForm').classList.add('d-none');
+    document.getElementById('registerForm').classList.remove('d-none');
+}
+</script>
+{% endblock %}

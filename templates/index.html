@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Ana Sayfa - LogTrackr{% endblock %}
+
+{% block extra_css %}
+<link href="{% static 'css/index.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="hero-section position-relative overflow-hidden">
+    <!-- Animated background gradient -->
+    <div class="position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); z-index: -2;"></div>
+    <!--<div class="position-absolute top-0 start-0 w-100 h-100 opacity-10" style="background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>'); z-index: -1;"></div>
+    -->
+    <div class="container text-center text-white py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <!-- Animated shield icon -->
+                <div class="mb-4">
+                    <i class="fas fa-shield-alt fa-4x mb-3 animate__animated animate__fadeInDown" style="filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));"></i>
+                </div>
+                
+                <h1 class="display-3 fw-bold mb-3 animate__animated animate__fadeInUp">
+                    Log<span class="text-warning">Trackr</span>
+                </h1>
+                <p class="lead fs-4 mb-4 animate__animated animate__fadeInUp animate__delay-1s">
+                    Güvenlik loglarınızı analiz edin, tehditleri görselleştirin ve siber güvenliğinizi güçlendirin
+                </p>
+                
+                <!-- Dynamic button container -->
+                <div class="mt-5 animate__animated animate__fadeInUp animate__delay-2s" id="auth-buttons">
+                    <!-- Buttons will be dynamically inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Floating particles effect -->
+    <div class="particles position-absolute top-0 start-0 w-100 h-100 overflow-hidden" style="z-index: -1;">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+</div>
+
+<div class="container py-5">
+    <!-- Features Section with enhanced cards -->
+    <div class="row g-4 mb-5">
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm feature-card">
+                <div class="card-body text-center p-4">
+                    <div class="feature-icon mb-3">
+                        <i class="fas fa-upload fa-3x text-primary"></i>
+                    </div>
+                    <h5 class="card-title fw-bold">CSV Upload</h5>
+                    <p class="card-text text-muted">Log dosyalarınızı kolayca sisteme yükleyin ve gerçek zamanlı analiz başlatın.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm feature-card">
+                <div class="card-body text-center p-4">
+                    <div class="feature-icon mb-3">
+                        <i class="fas fa-chart-pie fa-3x text-success"></i>
+                    </div>
+                    <h5 class="card-title fw-bold">Görselleştirme</h5>
+                    <p class="card-text text-muted">Verilerinizi interaktif grafiklerle görselleştirin ve trend analizleri yapın.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm feature-card">
+                <div class="card-body text-center p-4">
+                    <div class="feature-icon mb-3">
+                        <i class="fas fa-lock fa-3x text-warning"></i>
+                    </div>
+                    <h5 class="card-title fw-bold">Güvenli</h5>
+                    <p class="card-text text-muted">JWT token ile korunan güvenli erişim sistemi ve şifreli veri aktarımı.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enhanced Features and Format Info -->
+    <div class="row g-5">
+        <div class="col-lg-6">
+            <div class="feature-list-container">
+                <h3 class="mb-4 fw-bold text-primary">
+                    <i class="fas fa-star me-2"></i>Özellikler
+                </h3>
+                <div class="feature-list">
+                    <div class="feature-item mb-3 p-3 rounded bg-light">
+                        <i class="fas fa-check-circle text-success me-3"></i>
+                        <span class="fw-semibold">CSV dosya yükleme</span>
+                    </div>
+                    <div class="feature-item mb-3 p-3 rounded bg-light">
+                        <i class="fas fa-check-circle text-success me-3"></i>
+                        <span class="fw-semibold">Log filtreleme ve arama</span>
+                    </div>
+                    <div class="feature-item mb-3 p-3 rounded bg-light">
+                        <i class="fas fa-check-circle text-success me-3"></i>
+                        <span class="fw-semibold">İstatistiksel analiz</span>
+                    </div>
+                    <div class="feature-item mb-3 p-3 rounded bg-light">
+                        <i class="fas fa-check-circle text-success me-3"></i>
+                        <span class="fw-semibold">Gerçek zamanlı grafikler</span>
+                    </div>
+                    <div class="feature-item mb-3 p-3 rounded bg-light">
+                        <i class="fas fa-check-circle text-success me-3"></i>
+                        <span class="fw-semibold">Responsive tasarım</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="format-info">
+                <h3 class="mb-4 fw-bold text-primary">
+                    <i class="fas fa-file-csv me-2"></i>Desteklenen Formatlar
+                </h3>
+                <div class="alert alert-info border-0 shadow-sm">
+                    <div class="d-flex align-items-center mb-2">
+                        <i class="fas fa-info-circle me-2"></i>
+                        <strong>CSV Formatı:</strong>
+                    </div>
+                    <div class="bg-dark text-light rounded p-3 mt-2">
+                        <code class="text-warning">receive_time, type, severity, threat, source_ip</code>
+                    </div>
+                </div>
+                <div class="mt-3 p-3 bg-light rounded">
+                    <i class="fas fa-lightbulb text-warning me-2"></i>
+                    <small class="text-muted">Log dosyalarınız yukarıdaki format ile olmalıdır. Maksimum dosya boyutu: 50MB</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Additional CSS for animations and effects -->
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/index.js' %}"></script>
+{% endblock %}
